@@ -14,6 +14,38 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  flutter_flavorizr: ^2.3.0  # Mueve flutter_flavorizr a dev_dependencies
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/dev/app_icon.png
+    - assets/images/prod/app_icon.png
+
+flavorizr:
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+    ios: {}
+  flavors:
+    dev:
+      app:
+        name: "Weather Dev"
+
+      android:
+        applicationId: "com.frguerrerogo.weather.dev"
+        icon: "assets/images/dev/app_icon.png"  # Ruta del ícono para Android (dev)
+      # ios:
+      #   bundleId: "com.frguerrerogo.weather.dev"
+      #   icon: "assets/images/dev/app_icon.png"  # Ruta del ícono para Android (dev)
+    prod:
+      app:
+        name: "Weather"
+
+      android:
+        applicationId: "com.frguerrerogo.weather"
+        icon: "assets/images/prod/app_icon.png"  # Ruta del ícono para Android (prod)
+      # ios:
+      #   bundleId: "com.frguerrerogo.weather"
+      #   icon: "assets/images/prod/app_icon.png"  # Ruta del ícono para Android (prod)
