@@ -31,6 +31,5 @@ Aplicación de clima con soporte para múltiples entornos (desarrollo y producci
         flutter run --flavor prod -t lib/main.dart
         ```
     - Depuración en Visual Studio Code
-        ```bash
+
         El proyecto está configurado para soportar la depuración con los ambientes 'Dev' y 'Prod' desde 'Run and Debug' en Visual Studio Code.
-        ```

@@ -10,11 +10,18 @@ dependencies:
   flutter:
     sdk: flutter
 
+  kiwi: ^5.0.0
+  intl: ^0.19.0
+  json_annotation: ^4.9.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  flutter_flavorizr: ^2.3.0  # Mueve flutter_flavorizr a dev_dependencies
+  flutter_flavorizr: ^2.3.0
+  build_runner: ^2.4.15
+  kiwi_generator: ^4.2.1
+  json_serializable: ^6.9.0
 
 flutter:
   uses-material-design: true
@@ -35,17 +42,17 @@ flavorizr:
 
       android:
         applicationId: "com.frguerrerogo.weather.dev"
-        icon: "assets/images/dev/app_icon.png"  # Ruta del ícono para Android (dev)
+        icon: "assets/images/dev/app_icon.png"
       # ios:
       #   bundleId: "com.frguerrerogo.weather.dev"
-      #   icon: "assets/images/dev/app_icon.png"  # Ruta del ícono para Android (dev)
+      #   icon: "assets/images/dev/app_icon.png"
     prod:
       app:
         name: "Weather"
 
       android:
         applicationId: "com.frguerrerogo.weather"
-        icon: "assets/images/prod/app_icon.png"  # Ruta del ícono para Android (prod)
+        icon: "assets/images/prod/app_icon.png"
       # ios:
       #   bundleId: "com.frguerrerogo.weather"
-      #   icon: "assets/images/prod/app_icon.png"  # Ruta del ícono para Android (prod)
+      #   icon: "assets/images/prod/app_icon.png"
