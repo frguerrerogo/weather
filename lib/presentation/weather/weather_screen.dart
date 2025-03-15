@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-class MyHomeScreen extends StatefulWidget {
-  const MyHomeScreen({super.key});
+class WeatherScreen extends StatefulWidget {
+  const WeatherScreen({super.key});
 
   @override
-  State<MyHomeScreen> createState() => _MyHomeScreenState();
+  State<WeatherScreen> createState() => _WeatherScreenState();
 }
 
-class _MyHomeScreenState extends State<MyHomeScreen> {
+class _WeatherScreenState extends State<WeatherScreen> {
   Position? _currentPosition;
   String _locationMessage = "Obteniendo ubicación...";
 
