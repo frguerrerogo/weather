@@ -14,7 +14,7 @@ android.apply {
         create("prod") {
             dimension = "flavor-type"
             applicationId = "com.frguerrerogo.weather"
-            resValue(type = "string", name = "app_name", value = "Weather Prod")
+            resValue(type = "string", name = "app_name", value = "Weather")
         }
     }
 }

@@ -1,7 +1,4 @@
-enum Flavor {
-  dev,
-  prod,
-}
+enum Flavor { dev, prod }
 
 class F {
   static late final Flavor appFlavor;
@@ -13,8 +10,7 @@ class F {
       case Flavor.dev:
         return 'Weather Dev';
       case Flavor.prod:
-        return 'Weather Prod';
+        return 'Weather';
     }
   }
-
 }
