@@ -1,37 +1,37 @@
 import 'package:weather/data/core/adapters/index.dart' show Adapter;
 import 'package:weather/data/core/models/index.dart' show CurrentConditionsModel;
-import 'package:weather/domain/weather/core/entities/index.dart' show CurrentConditions;
+import 'package:weather/domain/core/entities/index.dart' show CurrentConditions;
 
 class CurrentConditionsAdapter implements Adapter<CurrentConditions, CurrentConditionsModel> {
   @override
   CurrentConditions toEntity(CurrentConditionsModel model) {
     return CurrentConditions(
-      datetime: model.datetime,
-      datetimeEpoch: model.datetimeEpoch,
-      temp: model.temp,
-      feelslike: model.feelslike,
-      humidity: model.humidity,
-      dew: model.dew,
-      precipprob: model.precipprob,
-      snow: model.snow,
-      snowdepth: model.snowdepth,
-      windspeed: model.windspeed,
-      winddir: model.winddir,
-      pressure: model.pressure,
-      visibility: model.visibility,
-      cloudcover: model.cloudcover,
-      solarradiation: model.solarradiation,
-      solarenergy: model.solarenergy,
-      uvindex: model.uvindex,
-      conditions: model.conditions,
-      icon: model.icon,
-      stations: model.stations,
-      source: model.source,
-      sunrise: model.sunrise,
-      sunriseEpoch: model.sunriseEpoch,
-      sunset: model.sunset,
-      sunsetEpoch: model.sunsetEpoch,
-      moonphase: model.moonphase,
+      datetime: model.datetime ?? '',
+      datetimeEpoch: model.datetimeEpoch ?? 0,
+      temp: model.temp ?? 0.0,
+      feelslike: model.feelslike ?? 0.0,
+      humidity: model.humidity ?? 0.0,
+      dew: model.dew ?? 0.0,
+      precipprob: model.precipprob ?? 0.0,
+      snow: model.snow ?? 0.0,
+      snowdepth: model.snowdepth ?? 0.0,
+      windspeed: model.windspeed ?? 0.0,
+      winddir: model.winddir ?? 0.0,
+      pressure: model.pressure ?? 0.0,
+      visibility: model.visibility ?? 0.0,
+      cloudcover: model.cloudcover ?? 0.0,
+      solarradiation: model.solarradiation ?? 0.0,
+      solarenergy: model.solarenergy ?? 0.0,
+      uvindex: model.uvindex ?? 0.0,
+      conditions: model.conditions ?? '',
+      icon: model.icon ?? '',
+      stations: model.stations ?? [],
+      source: model.source ?? '',
+      sunrise: model.sunrise ?? '',
+      sunriseEpoch: model.sunriseEpoch ?? 0,
+      sunset: model.sunset ?? '',
+      sunsetEpoch: model.sunsetEpoch ?? 0,
+      moonphase: model.moonphase ?? 0.0,
     );
   }
 

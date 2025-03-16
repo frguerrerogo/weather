@@ -8,7 +8,11 @@ part of 'dependency_injector.dart';
 
 class _$Injector extends Injector {
   @override
-  void _registerDatabase() {}
+  void _registerDatabase() {
+    final KiwiContainer container = KiwiContainer();
+    container.registerSingleton((c) => WeatherApi());
+  }
+
   @override
   void _registerDataSources() {}
   @override
@@ -27,7 +31,10 @@ class _$Injector extends Injector {
   }
 
   @override
-  void _registerRepositories() {}
-  @override
-  void _registerProviders() {}
+  void _registerRepositories() {
+    final KiwiContainer container = KiwiContainer();
+    container.registerSingleton<WeatherRepository>((c) => WeatherRepositoryImpl(
+        weatherAdapter: c.resolve<WeatherAdapter>(),
+        weatherApi: c.resolve<WeatherApi>()));
+  }
 }

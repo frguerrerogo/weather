@@ -7,14 +7,14 @@ part of 'station_model.dart';
 // **************************************************************************
 
 StationModel _$StationModelFromJson(Map<String, dynamic> json) => StationModel(
-      distance: (json['distance'] as num).toDouble(),
-      latitude: (json['latitude'] as num).toDouble(),
-      longitude: (json['longitude'] as num).toDouble(),
-      useCount: (json['useCount'] as num).toInt(),
-      id: json['id'] as String,
-      name: json['name'] as String,
-      quality: (json['quality'] as num).toInt(),
-      contribution: (json['contribution'] as num).toDouble(),
+      distance: (json['distance'] as num?)?.toDouble(),
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      useCount: (json['useCount'] as num?)?.toInt(),
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      quality: (json['quality'] as num?)?.toInt(),
+      contribution: (json['contribution'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$StationModelToJson(StationModel instance) =>

@@ -1,4 +1,4 @@
-import 'package:weather/domain/weather/core/entities/index.dart' show Hour;
+import 'package:weather/domain/core/entities/index.dart' show Hour;
 
 class Day {
   final String datetime;

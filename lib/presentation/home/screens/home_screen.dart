@@ -20,7 +20,7 @@ class HomeScreen extends ConsumerWidget {
         onTap: (index) => ref.read(homeCounterProvider.notifier).state = index,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.cloud), label: 'Clima'),
-          BottomNavigationBarItem(icon: Icon(Icons.event), label: 'Eventos'),
+          BottomNavigationBarItem(icon: Icon(Icons.event_note_outlined), label: 'Eventos'),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favoritos'),
         ],
       ),

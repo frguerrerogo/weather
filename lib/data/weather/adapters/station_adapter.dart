@@ -1,19 +1,19 @@
 import 'package:weather/data/core/adapters/index.dart' show Adapter;
 import 'package:weather/data/core/models/index.dart' show StationModel;
-import 'package:weather/domain/weather/core/entities/index.dart' show Station;
+import 'package:weather/domain/core/entities/index.dart' show Station;
 
 class StationAdapter implements Adapter<Station, StationModel> {
   @override
   Station toEntity(StationModel model) {
     return Station(
-      distance: model.distance,
-      latitude: model.latitude,
-      longitude: model.longitude,
-      useCount: model.useCount,
-      id: model.id,
-      name: model.name,
-      quality: model.quality,
-      contribution: model.contribution,
+      distance: model.distance ?? 0.0,
+      latitude: model.latitude ?? 0.0,
+      longitude: model.longitude ?? 0.0,
+      useCount: model.useCount ?? 0,
+      id: model.id ?? '',
+      name: model.name ?? '',
+      quality: model.quality ?? 0,
+      contribution: model.contribution ?? 0.0,
     );
   }
 

@@ -1,0 +1,25 @@
+class AppConstants {
+  static const Map<String, String> weatherConditionsTranslations = {
+    "Rain": "Lluvia",
+    "Snow": "Nieve",
+    "Cloudy": "Nublado",
+    "Partially cloudy": "Parcialmente nublado",
+    "Sunny": "Soleado",
+    "Clear": "Despejado",
+    "Thunderstorm": "Tormenta",
+    "Fog": "Niebla",
+    "Windy": "Ventoso",
+    "Overcast": "Cubierto",
+    "Drizzle": "Llovizna",
+    "Showers": "Chubascos",
+    "Hail": "Granizo",
+    "Sleet": "Aguanieve",
+    "Mist": "Bruma",
+    "Smoke": "Humo",
+    "Dust": "Polvo",
+    "Sand": "Arena",
+    "Ash": "Ceniza",
+    "Squall": "Chubasco",
+    "Tornado": "Tornado",
+  };
+}

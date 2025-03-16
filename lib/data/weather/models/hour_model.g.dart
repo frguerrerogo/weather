@@ -7,35 +7,35 @@ part of 'hour_model.dart';
 // **************************************************************************
 
 HourModel _$HourModelFromJson(Map<String, dynamic> json) => HourModel(
-      datetime: json['datetime'] as String,
-      datetimeEpoch: (json['datetimeEpoch'] as num).toInt(),
-      temp: (json['temp'] as num).toDouble(),
-      feelslike: (json['feelslike'] as num).toDouble(),
-      humidity: (json['humidity'] as num).toDouble(),
-      dew: (json['dew'] as num).toDouble(),
-      precip: (json['precip'] as num).toDouble(),
-      precipprob: (json['precipprob'] as num).toDouble(),
-      snow: (json['snow'] as num).toDouble(),
-      snowdepth: (json['snowdepth'] as num).toDouble(),
+      datetime: json['datetime'] as String?,
+      datetimeEpoch: (json['datetimeEpoch'] as num?)?.toInt(),
+      temp: (json['temp'] as num?)?.toDouble(),
+      feelslike: (json['feelslike'] as num?)?.toDouble(),
+      humidity: (json['humidity'] as num?)?.toDouble(),
+      dew: (json['dew'] as num?)?.toDouble(),
+      precip: (json['precip'] as num?)?.toDouble(),
+      precipprob: (json['precipprob'] as num?)?.toDouble(),
+      snow: (json['snow'] as num?)?.toDouble(),
+      snowdepth: (json['snowdepth'] as num?)?.toDouble(),
       preciptype: (json['preciptype'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      windgust: (json['windgust'] as num).toDouble(),
-      windspeed: (json['windspeed'] as num).toDouble(),
-      winddir: (json['winddir'] as num).toDouble(),
-      pressure: (json['pressure'] as num).toDouble(),
-      visibility: (json['visibility'] as num).toDouble(),
-      cloudcover: (json['cloudcover'] as num).toDouble(),
-      solarradiation: (json['solarradiation'] as num).toDouble(),
-      solarenergy: (json['solarenergy'] as num).toDouble(),
-      uvindex: (json['uvindex'] as num).toDouble(),
-      severerisk: (json['severerisk'] as num).toDouble(),
-      conditions: json['conditions'] as String,
-      icon: json['icon'] as String,
+      windgust: (json['windgust'] as num?)?.toDouble(),
+      windspeed: (json['windspeed'] as num?)?.toDouble(),
+      winddir: (json['winddir'] as num?)?.toDouble(),
+      pressure: (json['pressure'] as num?)?.toDouble(),
+      visibility: (json['visibility'] as num?)?.toDouble(),
+      cloudcover: (json['cloudcover'] as num?)?.toDouble(),
+      solarradiation: (json['solarradiation'] as num?)?.toDouble(),
+      solarenergy: (json['solarenergy'] as num?)?.toDouble(),
+      uvindex: (json['uvindex'] as num?)?.toDouble(),
+      severerisk: (json['severerisk'] as num?)?.toDouble(),
+      conditions: json['conditions'] as String?,
+      icon: json['icon'] as String?,
       stations: (json['stations'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      source: json['source'] as String,
+      source: json['source'] as String?,
     );
 
 Map<String, dynamic> _$HourModelToJson(HourModel instance) => <String, dynamic>{

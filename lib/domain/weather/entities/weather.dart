@@ -1,4 +1,4 @@
-import 'package:weather/domain/weather/core/entities/index.dart' show CurrentConditions, Day, Station;
+import 'package:weather/domain/core/entities/index.dart' show CurrentConditions, Day, Station;
 
 class Weather {
   final double queryCost;
@@ -12,7 +12,7 @@ class Weather {
   final List<Day> days;
   final List<dynamic> alerts;
   final Map<String, Station> stations;
-  final CurrentConditions currentConditions;
+  final CurrentConditions? currentConditions;
 
   Weather({
     required this.queryCost,
