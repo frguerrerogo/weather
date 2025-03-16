@@ -6,8 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:weather/core/di/dependency_injector.dart' show Injector;
 
 import 'package:weather/core/router/app_router.dart';
-
-import 'core/config/flavors.dart';
+import 'package:weather/flavors.dart';
 
 void main() async {
   F.appFlavor = Flavor.values.firstWhere((element) => element.name == appFlavor);

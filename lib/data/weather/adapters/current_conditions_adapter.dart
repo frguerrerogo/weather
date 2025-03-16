@@ -1,10 +1,12 @@
-import 'package:weather/data/core/adapters/index.dart' show Adapter;
+import 'package:weather/data/core/adapters/index.dart' show Adapter, RealmAdapter;
 import 'package:weather/data/core/models/index.dart' show CurrentConditionsModel;
+import 'package:weather/data/core/realm/index.dart' show CurrentConditionsRealm;
 import 'package:weather/domain/core/entities/index.dart' show CurrentConditions;
 
-class CurrentConditionsAdapter implements Adapter<CurrentConditions, CurrentConditionsModel> {
+class CurrentConditionsAdapter extends Adapter<CurrentConditions, CurrentConditionsModel>
+    with RealmAdapter<CurrentConditions, CurrentConditionsRealm> {
   @override
-  CurrentConditions toEntity(CurrentConditionsModel model) {
+  CurrentConditions modelToEntity(CurrentConditionsModel model) {
     return CurrentConditions(
       datetime: model.datetime ?? '',
       datetimeEpoch: model.datetimeEpoch ?? 0,
@@ -36,7 +38,7 @@ class CurrentConditionsAdapter implements Adapter<CurrentConditions, CurrentCond
   }
 
   @override
-  CurrentConditionsModel toModel(CurrentConditions entity) {
+  CurrentConditionsModel entityToModel(CurrentConditions entity) {
     return CurrentConditionsModel(
       datetime: entity.datetime,
       datetimeEpoch: entity.datetimeEpoch,
@@ -64,6 +66,71 @@ class CurrentConditionsAdapter implements Adapter<CurrentConditions, CurrentCond
       sunset: entity.sunset,
       sunsetEpoch: entity.sunsetEpoch,
       moonphase: entity.moonphase,
+    );
+  }
+
+  @override
+  CurrentConditionsRealm entityToRealm(CurrentConditions entity) {
+    return CurrentConditionsRealm(
+      entity.datetime,
+      entity.datetimeEpoch,
+      entity.temp,
+      entity.feelslike,
+      entity.humidity,
+      entity.dew,
+      entity.precip ?? 0.0,
+      entity.precipprob,
+      entity.snow,
+      entity.snowdepth,
+      entity.windgust ?? 0.0,
+      entity.windspeed,
+      entity.winddir,
+      entity.pressure,
+      entity.visibility,
+      entity.cloudcover,
+      entity.solarradiation,
+      entity.solarenergy,
+      entity.uvindex,
+      entity.conditions,
+      entity.icon,
+      entity.source,
+      entity.sunrise,
+      entity.sunriseEpoch,
+      entity.sunset,
+      entity.sunsetEpoch,
+      entity.moonphase,
+    );
+  }
+
+  @override
+  CurrentConditions realmToEntity(CurrentConditionsRealm realm) {
+    return CurrentConditions(
+      datetime: realm.datetime,
+      datetimeEpoch: realm.datetimeEpoch,
+      temp: realm.temp,
+      feelslike: realm.feelslike,
+      humidity: realm.humidity,
+      dew: realm.dew,
+      precipprob: realm.precipprob,
+      snow: realm.snow,
+      snowdepth: realm.snowdepth,
+      windspeed: realm.windspeed,
+      winddir: realm.winddir,
+      pressure: realm.pressure,
+      visibility: realm.visibility,
+      cloudcover: realm.cloudcover,
+      solarradiation: realm.solarradiation,
+      solarenergy: realm.solarenergy,
+      uvindex: realm.uvindex,
+      conditions: realm.conditions,
+      icon: realm.icon,
+      stations: realm.stations,
+      source: realm.source,
+      sunrise: realm.sunrise,
+      sunriseEpoch: realm.sunriseEpoch,
+      sunset: realm.sunset,
+      sunsetEpoch: realm.sunsetEpoch,
+      moonphase: realm.moonphase,
     );
   }
 }

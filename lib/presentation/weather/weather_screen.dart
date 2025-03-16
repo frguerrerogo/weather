@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather/core/config/flavors.dart' show F;
 import 'package:weather/core/utils/app_utils.dart';
+import 'package:weather/flavors.dart' show F;
 import 'package:weather/presentation/core/providers/index.dart' show weatherProvider;
 
 class WeatherScreen extends ConsumerStatefulWidget {

@@ -1,10 +1,12 @@
-import 'package:weather/data/core/adapters/index.dart' show Adapter;
+import 'package:weather/data/core/adapters/index.dart' show Adapter, RealmAdapter;
 import 'package:weather/data/core/models/index.dart' show StationModel;
+import 'package:weather/data/core/realm/index.dart' show StationRealm;
 import 'package:weather/domain/core/entities/index.dart' show Station;
 
-class StationAdapter implements Adapter<Station, StationModel> {
+class StationAdapter extends Adapter<Station, StationModel>
+    with RealmAdapter<Station, StationRealm> {
   @override
-  Station toEntity(StationModel model) {
+  Station modelToEntity(StationModel model) {
     return Station(
       distance: model.distance ?? 0.0,
       latitude: model.latitude ?? 0.0,
@@ -18,7 +20,7 @@ class StationAdapter implements Adapter<Station, StationModel> {
   }
 
   @override
-  StationModel toModel(Station entity) {
+  StationModel entityToModel(Station entity) {
     return StationModel(
       distance: entity.distance,
       latitude: entity.latitude,
@@ -28,6 +30,34 @@ class StationAdapter implements Adapter<Station, StationModel> {
       name: entity.name,
       quality: entity.quality,
       contribution: entity.contribution,
+    );
+  }
+
+  @override
+  StationRealm entityToRealm(Station entity) {
+    return StationRealm(
+      entity.distance,
+      entity.latitude,
+      entity.longitude,
+      entity.useCount,
+      entity.id,
+      entity.name,
+      entity.quality,
+      entity.contribution,
+    );
+  }
+
+  @override
+  Station realmToEntity(StationRealm realm) {
+    return Station(
+      distance: realm.distance,
+      latitude: realm.latitude,
+      longitude: realm.longitude,
+      useCount: realm.useCount,
+      id: realm.id,
+      name: realm.name,
+      quality: realm.quality,
+      contribution: realm.contribution,
     );
   }
 }

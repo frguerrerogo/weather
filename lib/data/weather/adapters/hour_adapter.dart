@@ -1,10 +1,11 @@
-import 'package:weather/data/core/adapters/index.dart' show Adapter;
+import 'package:weather/data/core/adapters/index.dart' show Adapter, RealmAdapter;
 import 'package:weather/data/core/models/index.dart' show HourModel;
+import 'package:weather/data/core/realm/index.dart' show HourRealm;
 import 'package:weather/domain/core/entities/index.dart' show Hour;
 
-class HourAdapter implements Adapter<Hour, HourModel> {
+class HourAdapter extends Adapter<Hour, HourModel> with RealmAdapter<Hour, HourRealm> {
   @override
-  Hour toEntity(HourModel model) {
+  Hour modelToEntity(HourModel model) {
     return Hour(
       datetime: model.datetime ?? '',
       datetimeEpoch: model.datetimeEpoch ?? 0,
@@ -33,7 +34,7 @@ class HourAdapter implements Adapter<Hour, HourModel> {
   }
 
   @override
-  HourModel toModel(Hour entity) {
+  HourModel entityToModel(Hour entity) {
     return HourModel(
       datetime: entity.datetime,
       datetimeEpoch: entity.datetimeEpoch,
@@ -58,6 +59,64 @@ class HourAdapter implements Adapter<Hour, HourModel> {
       conditions: entity.conditions,
       icon: entity.icon,
       source: entity.source,
+    );
+  }
+
+  @override
+  HourRealm entityToRealm(Hour entity) {
+    return HourRealm(
+      entity.datetime,
+      entity.datetimeEpoch,
+      entity.temp,
+      entity.feelslike,
+      entity.humidity,
+      entity.dew,
+      entity.precip,
+      entity.precipprob,
+      entity.snow,
+      entity.snowdepth,
+      entity.windgust,
+      entity.windspeed,
+      entity.winddir,
+      entity.pressure,
+      entity.visibility,
+      entity.cloudcover,
+      entity.solarradiation,
+      entity.solarenergy,
+      entity.uvindex,
+      entity.severerisk,
+      entity.conditions,
+      entity.icon,
+      entity.source,
+    );
+  }
+
+  @override
+  Hour realmToEntity(HourRealm realm) {
+    return Hour(
+      datetime: realm.datetime,
+      datetimeEpoch: realm.datetimeEpoch,
+      temp: realm.temp,
+      feelslike: realm.feelslike,
+      humidity: realm.humidity,
+      dew: realm.dew,
+      precip: realm.precip,
+      precipprob: realm.precipprob,
+      snow: realm.snow,
+      snowdepth: realm.snowdepth,
+      windgust: realm.windgust,
+      windspeed: realm.windspeed,
+      winddir: realm.winddir,
+      pressure: realm.pressure,
+      visibility: realm.visibility,
+      cloudcover: realm.cloudcover,
+      solarradiation: realm.solarradiation,
+      solarenergy: realm.solarenergy,
+      uvindex: realm.uvindex,
+      severerisk: realm.severerisk,
+      conditions: realm.conditions,
+      icon: realm.icon,
+      source: realm.source,
     );
   }
 }

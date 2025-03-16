@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'package:weather/data/core/datasources/apis/api_utils.dart';
+import 'package:weather/data/core/datasources/remote/apis/api_utils.dart';
 import 'package:weather/data/core/models/index.dart' show WeatherModel;
 
 const String _baseUrl =
@@ -10,7 +10,7 @@ const String _baseUrl =
 const String _apiKey = 'J7UX4WJ3NVTRCHTKMTQR7XUZ5';
 
 class WeatherApi {
-  Future<WeatherModel> getWeather({required double latitude, required double longitude}) async {
+  Future<WeatherModel> fetchWeather({required double latitude, required double longitude}) async {
     final (startDate, endDate) = ApiUtils.getDateRange();
     final uri = Uri.parse(
       _baseUrl

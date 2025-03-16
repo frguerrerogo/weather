@@ -1,14 +1,15 @@
-import 'package:weather/data/core/adapters/index.dart' show Adapter, HourAdapter;
+import 'package:weather/data/core/adapters/index.dart' show Adapter, HourAdapter, RealmAdapter;
 import 'package:weather/data/core/models/index.dart' show DayModel;
+import 'package:weather/data/core/realm/index.dart' show DayRealm;
 import 'package:weather/domain/core/entities/index.dart' show Day;
 
-class DayAdapter implements Adapter<Day, DayModel> {
+class DayAdapter extends Adapter<Day, DayModel> with RealmAdapter<Day, DayRealm> {
   final HourAdapter _hourAdapter;
 
   DayAdapter({required HourAdapter hourAdapter}) : _hourAdapter = hourAdapter;
 
   @override
-  Day toEntity(DayModel model) {
+  Day modelToEntity(DayModel model) {
     return Day(
       datetime: model.datetime ?? '',
       datetimeEpoch: model.datetimeEpoch ?? 0,
@@ -46,12 +47,12 @@ class DayAdapter implements Adapter<Day, DayModel> {
       icon: model.icon ?? '',
       stations: model.stations ?? [],
       source: model.source ?? '',
-      hours: (model.hours ?? []).map(_hourAdapter.toEntity).toList(),
+      hours: (model.hours ?? []).map(_hourAdapter.modelToEntity).toList(),
     );
   }
 
   @override
-  DayModel toModel(Day entity) {
+  DayModel entityToModel(Day entity) {
     return DayModel(
       datetime: entity.datetime,
       datetimeEpoch: entity.datetimeEpoch,
@@ -89,7 +90,93 @@ class DayAdapter implements Adapter<Day, DayModel> {
       icon: entity.icon,
       stations: entity.stations,
       source: entity.source,
-      hours: entity.hours.map(_hourAdapter.toModel).toList(),
+      hours: entity.hours.map(_hourAdapter.entityToModel).toList(),
+    );
+  }
+
+  @override
+  DayRealm entityToRealm(Day entity) {
+    return DayRealm(
+      entity.datetime,
+      entity.datetimeEpoch,
+      entity.tempmax,
+      entity.tempmin,
+      entity.temp,
+      entity.feelslikemax,
+      entity.feelslikemin,
+      entity.feelslike,
+      entity.dew,
+      entity.humidity,
+      entity.precip,
+      entity.precipprob,
+      entity.precipcover,
+      entity.snow,
+      entity.snowdepth,
+      entity.windgust,
+      entity.windspeed,
+      entity.winddir,
+      entity.pressure,
+      entity.cloudcover,
+      entity.visibility,
+      entity.solarradiation,
+      entity.solarenergy,
+      entity.uvindex,
+      entity.severerisk,
+      entity.sunrise,
+      entity.sunriseEpoch,
+      entity.sunset,
+      entity.sunsetEpoch,
+      entity.moonphase,
+      entity.conditions,
+      entity.description,
+      entity.icon,
+      entity.source,
+      hours: entity.hours.map(_hourAdapter.entityToRealm),
+      preciptype: entity.preciptype.map((e) => e),
+      stations: entity.stations.map((e) => e),
+    );
+  }
+
+  @override
+  Day realmToEntity(DayRealm realm) {
+    return Day(
+      datetime: realm.datetime,
+      datetimeEpoch: realm.datetimeEpoch,
+      tempmax: realm.tempmax,
+      tempmin: realm.tempmin,
+      temp: realm.temp,
+      feelslikemax: realm.feelslikemax,
+      feelslikemin: realm.feelslikemin,
+      feelslike: realm.feelslike,
+      dew: realm.dew,
+      humidity: realm.humidity,
+      precip: realm.precip,
+      precipprob: realm.precipprob,
+      precipcover: realm.precipcover,
+      preciptype: realm.preciptype,
+      snow: realm.snow,
+      snowdepth: realm.snowdepth,
+      windgust: realm.windgust,
+      windspeed: realm.windspeed,
+      winddir: realm.winddir,
+      pressure: realm.pressure,
+      cloudcover: realm.cloudcover,
+      visibility: realm.visibility,
+      solarradiation: realm.solarradiation,
+      solarenergy: realm.solarenergy,
+      uvindex: realm.uvindex,
+      severerisk: realm.severerisk,
+      sunrise: realm.sunrise,
+      sunriseEpoch: realm.sunriseEpoch,
+      sunset: realm.sunset,
+      sunsetEpoch: realm.sunsetEpoch,
+      moonphase: realm.moonphase,
+      conditions: realm.conditions,
+      description: realm.description,
+      icon: realm.icon,
+      stations: realm.stations,
+      source: realm.source,
+      hours: realm.hours.map(_hourAdapter.realmToEntity).toList(),
     );
   }
 }

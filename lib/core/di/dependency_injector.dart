@@ -1,9 +1,8 @@
 import 'package:kiwi/kiwi.dart';
 
-// Base de Datos
-import 'package:weather/data/core/datasources/index.dart';
-
 // DataSources
+import 'package:weather/data/core/datasources/remote/index.dart';
+import 'package:weather/data/core/datasources/local/index.dart';
 
 // Adapters
 import 'package:weather/data/core/adapters/index.dart';
@@ -22,11 +21,9 @@ abstract class Injector {
     injector._configure();
   }
 
-  // Base de Datos
-  @Register.singleton(WeatherApi)
-  void _registerDatabase();
-
   //  DataSources
+  @Register.singleton(WeatherApi)
+  @Register.singleton(RealmDataSource)
   void _registerDataSources();
 
   // Adapters
@@ -43,7 +40,6 @@ abstract class Injector {
 
   // Método principal que llama a todos los registros
   void _configure() {
-    _registerDatabase();
     _registerDataSources();
     _registerAdapters();
     _registerRepositories();
