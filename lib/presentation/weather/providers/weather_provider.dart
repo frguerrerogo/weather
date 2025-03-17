@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weather/core/di/dependency_injector.dart' show Injector;
-import 'package:weather/core/utils/app_utils.dart';
+import 'package:weather/core/app_utils.dart';
 import 'package:weather/domain/core/entities/index.dart' show Day, Hour, Weather;
 import 'package:weather/domain/core/repositories/index.dart' show WeatherRepository;
 

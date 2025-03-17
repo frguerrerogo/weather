@@ -3,10 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:weather/core/di/dependency_injector.dart' show Injector;
 
-import 'package:weather/core/router/app_router.dart';
-import 'package:weather/flavors.dart';
+import 'package:weather/core/index.dart' show AppTheme, F, Flavor, Injector, router;
 
 void main() async {
   F.appFlavor = Flavor.values.firstWhere((element) => element.name == appFlavor);
@@ -22,11 +20,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = AppTheme();
     return MaterialApp.router(
       routerConfig: router,
       debugShowCheckedModeBanner: false,
       title: F.title,
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: appTheme.getTheme(),
     );
   }
 }

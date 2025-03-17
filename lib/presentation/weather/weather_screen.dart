@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather/core/utils/app_utils.dart';
-import 'package:weather/flavors.dart' show F;
+
+import 'package:weather/core/index.dart' show AppTextStyles;
+import 'package:weather/core/flavors/flavors.dart' show F;
+
 import 'package:weather/presentation/core/providers/index.dart' show weatherProvider;
+import 'package:weather/presentation/widgets/index.dart' show WeatherDayCard, WeatherToday;
 
 class WeatherScreen extends ConsumerStatefulWidget {
   const WeatherScreen({super.key});
@@ -21,98 +24,55 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     final weatherState = ref.watch(weatherProvider);
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: Text(F.title)),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            if (weatherState.isLoading)
-              const CircularProgressIndicator()
-            else if (weatherState.errorMessage != null)
-              Text(
-                weatherState.errorMessage!,
-                style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              )
-            else if (weatherState.weather != null)
-              Column(
-                children: [
-                  if (weatherState.hour != null)
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            AppUtils.formatDate(weatherState.weatherToday!.datetime),
-                            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            weatherState.weather!.timezone,
-                            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            '${weatherState.hour!.temp}°C',
-                            style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            AppUtils.translateCombinedWeatherConditions(
-                              weatherState.hour!.conditions,
-                            ),
+      backgroundColor: colorScheme.primary.withAlpha(50),
 
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              WeatherDetail(
-                                label: "Humedad",
-                                value: '${weatherState.hour!.humidity}%',
-                              ),
-                              WeatherDetail(
-                                label: "Viento",
-                                value: '${weatherState.hour!.windspeed} km/h',
-                              ),
-                              WeatherDetail(
-                                label: "Sensación",
-                                value: '${weatherState.hour!.feelslike}°C',
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    )
-                  else
-                    Text('No data'),
-                  const Divider(height: 20, thickness: 1),
-                ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Text(F.title, style: AppTextStyles.headlineMedium(context)),
               ),
-          ],
+
+              if (weatherState.isLoading)
+                Center(child: const CircularProgressIndicator())
+              else if (weatherState.errorMessage != null)
+                Text(
+                  weatherState.errorMessage!,
+                  style: AppTextStyles.errorText(context),
+                  textAlign: TextAlign.center,
+                )
+              else if (weatherState.weather != null)
+                Column(
+                  children: [
+                    if (weatherState.hour != null)
+                      WeatherToday(
+                        datetime: weatherState.weatherToday!.datetime,
+                        timezone: weatherState.weather!.timezone,
+                        temp: weatherState.hour!.temp,
+                        conditions: weatherState.hour!.conditions,
+                        humidity: weatherState.hour!.humidity,
+                        windspeed: weatherState.hour!.windspeed,
+                        feelslike: weatherState.hour!.feelslike,
+                        precipprob: weatherState.hour!.precipprob,
+                        uvindex: weatherState.hour!.uvindex,
+                        pressure: weatherState.hour!.pressure,
+                      )
+                    else
+                      Text('No data'),
+                    if (weatherState.hour != null)
+                      ...weatherState.last5Days.map((day) => WeatherDayCard(day: day)),
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
-    );
-  }
-}
-
-// Widget para mostrar detalles del clima (Humedad, Viento, Sensación)
-class WeatherDetail extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const WeatherDetail({required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(label, style: const TextStyle(fontSize: 14, color: Colors.grey)),
-        const SizedBox(height: 5),
-        Text(value, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-      ],
     );
   }
 }
