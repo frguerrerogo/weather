@@ -27,7 +27,7 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.primary.withAlpha(50),
+      backgroundColor: colorScheme.primaryContainer,
 
       body: Center(
         child: SingleChildScrollView(

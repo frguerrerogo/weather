@@ -9,33 +9,30 @@ class BottomNavBarCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    return ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
-      child: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        onTap: onTap,
-        backgroundColor: colorScheme.primaryContainer,
-        selectedItemColor: colorScheme.primary,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-        items: [
-          BottomNavigationBarItem(
-            icon: _AnimatedNavIcon(icon: Icons.cloud, isSelected: selectedIndex == 0),
-            label: 'Clima',
-          ),
-          BottomNavigationBarItem(
-            icon: _AnimatedNavIcon(icon: Icons.event_note_outlined, isSelected: selectedIndex == 1),
-            label: 'Eventos',
-          ),
-          BottomNavigationBarItem(
-            icon: _AnimatedNavIcon(icon: Icons.favorite, isSelected: selectedIndex == 2),
-            label: 'Favoritos',
-          ),
-        ],
-      ),
+    return BottomNavigationBar(
+      currentIndex: selectedIndex,
+      onTap: onTap,
+      backgroundColor: colorScheme.primaryContainer,
+      selectedItemColor: colorScheme.primary,
+      unselectedItemColor: Colors.grey,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+      selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+      items: [
+        BottomNavigationBarItem(
+          icon: _AnimatedNavIcon(icon: Icons.cloud, isSelected: selectedIndex == 0),
+          label: 'Clima',
+        ),
+        BottomNavigationBarItem(
+          icon: _AnimatedNavIcon(icon: Icons.event_note_outlined, isSelected: selectedIndex == 1),
+          label: 'Eventos',
+        ),
+        BottomNavigationBarItem(
+          icon: _AnimatedNavIcon(icon: Icons.favorite, isSelected: selectedIndex == 2),
+          label: 'Favoritos',
+        ),
+      ],
     );
   }
 }
