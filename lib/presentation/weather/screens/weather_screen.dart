@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import 'package:weather/core/index.dart' show AppTextStyles;
-import 'package:weather/core/flavors/flavors.dart' show F;
+import 'package:weather/core/config/index.dart' show AppTextStyles;
+import 'package:weather/core/config/flavors/flavors.dart' show F;
 
 import 'package:weather/presentation/core/providers/index.dart' show weatherProvider;
-import 'package:weather/presentation/widgets/index.dart' show WeatherDayCard, WeatherToday;
+import 'package:weather/presentation/core/widgets/index.dart' show WeatherDayCard, WeatherToday;
 
 class WeatherScreen extends ConsumerStatefulWidget {
   const WeatherScreen({super.key});

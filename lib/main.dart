@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
-import 'package:weather/core/index.dart' show AppTheme, F, Flavor, Injector, router;
+import 'package:weather/core/config/index.dart' show AppTheme, F, Flavor, Injector, router;
 
 void main() async {
   F.appFlavor = Flavor.values.firstWhere((element) => element.name == appFlavor);

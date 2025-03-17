@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/core/index.dart' show AppTextStyles, AppUtils;
+import 'package:weather/core/config/index.dart' show AppTextStyles, AppUtils;
 
 class WeatherToday extends StatelessWidget {
   const WeatherToday({

@@ -11,7 +11,6 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
     Day? weatherToday;
     List<Day> last5Days = [];
     Hour? hour;
-    bool conect = true;
     bool hasInternet = false;
     try {
       final connectivity = Connectivity();
@@ -21,6 +20,7 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
       Position? position = await checkLocationServicesAndPermissions();
 
       try {
+        //if (!hasInternet) {
         if (!hasInternet) {
           await Future.delayed(Duration(microseconds: 100));
           final weather = _weatherRepository.getWeatherFromLocal();
@@ -35,7 +35,6 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
 
               state = state.copyWith(
                 isLoading: false,
-                //position: position,
                 weather: weather,
                 weatherToday: weatherToday,
                 hour: hour,

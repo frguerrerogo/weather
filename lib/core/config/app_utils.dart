@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:weather/core/app_constants.dart';
+import 'package:weather/core/config/app_constants.dart';
 
 class AppUtils {
   static String translateWeatherCondition(String condition) {

@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather/presentation/core/providers/index.dart' show homeCounterProvider;
 import 'package:weather/presentation/core/screens/index.dart'
     show EventsScreen, FavoritesScreen, WeatherScreen;
-import 'package:weather/presentation/widgets/index.dart' show BottomNavBarCustom;
+import 'package:weather/presentation/core/widgets/index.dart' show BottomNavBarCustom;
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
