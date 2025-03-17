@@ -17,7 +17,7 @@ La aplicación obtiene datos meteorológicos y eventos climáticos de la API de 
 #### ⭐ Favoritos
 - Permite a los usuarios agregar y eliminar eventos climáticos como favoritos.
 
-#### 🗺️ Mapa (Opcional)
+#### 🗺️ Mapa
 - Muestra las coordenadas de la ubicación seleccionada en un mapa interactivo.
 
 #### 📴 Modo Offline

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/core/config/index.dart' show AppTextStyles, AppUtils;
+import 'package:weather/presentation/core/widgets/index.dart' show WeatherDetail;
 
 class WeatherToday extends StatelessWidget {
   const WeatherToday({
@@ -60,30 +61,6 @@ class WeatherToday extends StatelessWidget {
               WeatherDetail(label: "Índice UV", value: '$uvindex'),
               WeatherDetail(label: "Presión", value: '$pressure hPa'),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class WeatherDetail extends StatelessWidget {
-  const WeatherDetail({super.key, required this.label, required this.value});
-
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 100,
-      child: Column(
-        children: [
-          Text(label, style: AppTextStyles.titleSmall(context)),
-          const SizedBox(height: 5),
-          Text(
-            value,
-            style: AppTextStyles.bodyMedium(context).copyWith(fontWeight: FontWeight.bold),
           ),
         ],
       ),
