@@ -7,7 +7,7 @@ import 'package:weather/data/core/models/index.dart' show WeatherModel;
 
 const String _baseUrl =
     'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{latitude},{longitude}/{startDate}/{endDate}?unitGroup=metric&key={apiKey}&contentType=json';
-const String _apiKey = 'J7UX4WJ3NVTRCHTKMTQR7XUZ5';
+const String _apiKey = 'TAYHZPJ44QB37YAEJLZVWAZ4E';
 
 class WeatherApi {
   Future<WeatherModel> fetchWeather({required double latitude, required double longitude}) async {

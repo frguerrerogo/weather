@@ -72,6 +72,16 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle textButton(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+      letterSpacing: 0.5,
+    );
+  }
+
   static TextStyle errorText(BuildContext context) {
     return TextStyle(
       fontSize: 18,

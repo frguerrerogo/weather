@@ -5,7 +5,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:weather/core/config/index.dart' show AppTextStyles;
 import 'package:weather/core/config/flavors/flavors.dart' show F;
 
-import 'package:weather/presentation/core/providers/index.dart' show weatherProvider;
+import 'package:weather/presentation/core/providers/index.dart'
+    show connectivityProvider, weatherProvider;
 import 'package:weather/presentation/core/widgets/index.dart' show WeatherDayCard, WeatherToday;
 
 class WeatherScreen extends ConsumerStatefulWidget {
@@ -17,14 +18,16 @@ class WeatherScreen extends ConsumerStatefulWidget {
 
 class _WeatherScreenState extends ConsumerState<WeatherScreen> {
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
     _requestLocationPermission();
   }
 
   Future<void> _requestLocationPermission() async {
+    final hasInternet = ref.read(connectivityProvider);
     await Permission.location.request();
-    ref.read(weatherProvider.notifier).initLoad();
+    ref.read(weatherProvider.notifier).initLoad(hasInternet);
   }
 
   @override

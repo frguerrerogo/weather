@@ -23,11 +23,7 @@ class WeatherDayCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(AppUtils.formatDate(day.datetime), style: AppTextStyles.titleSmall(context)),
-                Icon(
-                  _getWeatherIcon(day.conditions),
-                  color: _getWeatherColor(day.conditions),
-                  size: 32,
-                ),
+                Icon(_getWeatherIcon(day.icon), color: _getWeatherColor(day.icon), size: 32),
               ],
             ),
             const SizedBox(height: 12),
