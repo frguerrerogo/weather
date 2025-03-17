@@ -27,8 +27,7 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
   Future<void> _requestLocationPermission() async {
     final hasInternet = ref.read(connectivityProvider);
     await Permission.location.request();
-    //Retirar el true
-    ref.read(weatherProvider.notifier).initLoad(true);
+    ref.read(weatherProvider.notifier).initLoad(hasInternet);
   }
 
   @override

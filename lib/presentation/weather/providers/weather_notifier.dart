@@ -11,16 +11,12 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
     Day? weatherToday;
     List<Day> last5Days = [];
     Hour? hour;
-    // bool hasInternet = false;
-    try {
-      // final connectivity = Connectivity();
-      // final result = await connectivity.checkConnectivity();
-      // hasInternet = !result.contains(ConnectivityResult.none);
 
+    try {
       Position? position = await checkLocationServicesAndPermissions();
 
       try {
-        if (hasInternet) {
+        if (!hasInternet) {
           await Future.delayed(Duration(microseconds: 100));
           final weather = _weatherRepository.getWeatherFromLocal();
           if (weather != null) {

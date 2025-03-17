@@ -4,6 +4,40 @@
 
 La aplicación obtiene datos meteorológicos y eventos climáticos de la API de VisualCrossing, presentando la información en español y utilizando el sistema métrico. Además, se incluyen funcionalidades avanzadas como el almacenamiento local de datos (usando Realm), notificaciones en tiempo real (con Riverpod) y un modo offline que permite a los usuarios acceder a la última información cargada incluso sin conexión a Internet.
 
+## 📷 Capturas de Pantalla
+
+<table>
+  <tr>
+    <td>
+      <img src="assets/images/readme/1.jpeg" alt="Lista de Colaboradores" width="300" />
+      <p><strong>Permiso para usar ubicación</strong></p>
+    </td>
+    <td>
+      <img src="assets/images/readme/2.jpeg" alt="Búsqueda de Colaboradores" width="300" />
+      <p><strong>Información del día de hoy</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="assets/images/readme/3.jpeg" alt="Crear Colaborador" width="300" />
+      <p><strong>Información de los últimos días</strong></p>
+    </td>
+    <td>
+      <img src="assets/images/readme/4.jpeg" alt="Detalles del Colaborador" width="300" />
+      <p><strong>Ubicación del dispositivo en el mapa</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="assets/images/readme/5.jpeg" alt="Editar Colaborador" width="300" />
+      <p><strong>Eventos</strong></p>
+    </td>
+    <td>
+      <img src="assets/images/readme/6.jpeg" alt="Detalles del Colaborador" width="300" />
+      <p><strong>Sin conexión</strong></p>
+    </td>
+</table>
+
 ## 🚀 Características Principales
 
 ### 📌 Módulos o Pantallas
@@ -189,6 +223,7 @@ lib/
 - **HTTP**: Cliente HTTP para APIs.
 - **Json Annotation**: Serialización/deserialización de JSON.
 - **Permission Handler**: Manejo de permisos.
+- **Google Maps**: Uso de mapas.
 - **Geolocator**: Obtención de ubicación.
 - **Connectivity Plus**: Verificación de conexión a Internet.
 - **Intl**: Internacionalización y formatos.
