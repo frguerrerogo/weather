@@ -4,7 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather/core/index.dart' show AppTextStyles;
 import 'package:weather/core/flavors/flavors.dart' show F;
 
-import 'package:weather/presentation/core/providers/index.dart' show weatherProvider;
+import 'package:weather/presentation/core/providers/index.dart'
+    show connectivityNotifierProvider, weatherProvider;
 import 'package:weather/presentation/widgets/index.dart' show WeatherDayCard, WeatherToday;
 
 class WeatherScreen extends ConsumerStatefulWidget {
@@ -18,7 +19,8 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
   @override
   void initState() {
     super.initState();
-    ref.read(weatherProvider.notifier).getCurrentLocation();
+
+    ref.read(weatherProvider.notifier).initLoad();
   }
 
   @override
@@ -35,7 +37,7 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 10.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: Text(F.title, style: AppTextStyles.headlineMedium(context)),
               ),
 

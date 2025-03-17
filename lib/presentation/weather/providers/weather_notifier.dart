@@ -7,12 +7,17 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
     : _weatherRepository = Injector.container.resolve<WeatherRepository>(),
       super(WeatherState());
 
-  Future<void> getCurrentLocation() async {
+  Future<void> initLoad() async {
     Day? weatherToday;
     List<Day> last5Days = [];
     Hour? hour;
     bool conect = true;
+    bool hasInternet = false;
     try {
+      final connectivity = Connectivity();
+      final result = await connectivity.checkConnectivity();
+      hasInternet = !result.contains(ConnectivityResult.none);
+
       Position? position = await checkLocationServicesAndPermissions();
 
       try {
