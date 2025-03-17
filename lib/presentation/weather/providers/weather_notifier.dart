@@ -21,7 +21,7 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
       Position? position = await checkLocationServicesAndPermissions();
 
       try {
-        if (conect) {
+        if (!hasInternet) {
           await Future.delayed(Duration(microseconds: 100));
           final weather = _weatherRepository.getWeatherFromLocal();
           if (weather != null) {
@@ -49,7 +49,7 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
             );
           }
         } else {
-          if (position != null) {
+          if (position == null) {
             state = state.copyWith(
               errorMessage: "No se pudo obtener la ubicación. Verifica los servicios y permisos.",
               isLoading: false,
@@ -57,8 +57,8 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
             return;
           }
           final weather = await _weatherRepository.fetchWeatherFromRemote(
-            latitude: position!.latitude,
-            longitude: position!.longitude,
+            latitude: position.latitude,
+            longitude: position.longitude,
           );
 
           if (weather.days.isNotEmpty) {
@@ -96,26 +96,21 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
   }
 
   Future<Position?> checkLocationServicesAndPermissions() async {
-    // Verifica si los servicios de ubicación están habilitados
-    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return null; // Servicios de ubicación desactivados
-    }
-
-    // Verifica los permisos de ubicación
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return null; // Permisos denegados
+    var status = await Permission.location.status;
+    Position? position;
+    if (status.isGranted) {
+      position = await Geolocator.getCurrentPosition();
+    } else if (status.isDenied) {
+      status = await Permission.location.request();
+      if (status.isGranted) {
+        position = await Geolocator.getCurrentPosition();
+      } else {
+        position = null;
       }
+    } else if (status.isPermanentlyDenied) {
+      await openAppSettings();
+      position = null;
     }
-
-    if (permission == LocationPermission.deniedForever) {
-      return null; // Permisos denegados permanentemente
-    }
-
-    // Obtiene la posición actual
-    return await Geolocator.getCurrentPosition();
+    return position;
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import 'package:weather/core/index.dart' show AppTextStyles;
 import 'package:weather/core/flavors/flavors.dart' show F;
 
-import 'package:weather/presentation/core/providers/index.dart'
-    show connectivityNotifierProvider, weatherProvider;
+import 'package:weather/presentation/core/providers/index.dart' show weatherProvider;
 import 'package:weather/presentation/widgets/index.dart' show WeatherDayCard, WeatherToday;
 
 class WeatherScreen extends ConsumerStatefulWidget {
@@ -19,7 +19,11 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
   @override
   void initState() {
     super.initState();
+    _requestLocationPermission();
+  }
 
+  Future<void> _requestLocationPermission() async {
+    await Permission.location.request();
     ref.read(weatherProvider.notifier).initLoad();
   }
 
