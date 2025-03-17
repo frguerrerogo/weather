@@ -46,10 +46,16 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 
-	<!-- Permissions to access the location -->
+	<!-- Permissions to access the LOCATION -->
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Necesitamos acceder a tu ubicación para proporcionarte servicios personalizados.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Necesitamos acceder a tu ubicación en segundo plano para proporcionarte servicios personalizados.</string>
+	<!-- Permissions to access the INTERNET -->
+	<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
 </dict>
 </plist>
