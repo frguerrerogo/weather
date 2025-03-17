@@ -5,7 +5,7 @@ import 'package:weather/core/config/index.dart' show AppTextStyles;
 import 'package:weather/presentation/core/providers/index.dart'
     show connectivityProvider, homeCounterProvider;
 import 'package:weather/presentation/core/screens/index.dart'
-    show EventsScreen, FavoritesScreen, WeatherScreen;
+    show EventsScreen, FavoritesScreen, MapScreen, WeatherScreen;
 import 'package:weather/presentation/core/widgets/index.dart' show BottomNavBarCustom;
 
 class HomeScreen extends ConsumerWidget {
@@ -20,6 +20,7 @@ class HomeScreen extends ConsumerWidget {
       const WeatherScreen(),
       const EventsScreen(),
       const FavoritesScreen(),
+      const MapScreen(),
     ];
 
     WidgetsBinding.instance.addPostFrameCallback((_) {

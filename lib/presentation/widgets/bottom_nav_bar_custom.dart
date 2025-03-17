@@ -32,6 +32,10 @@ class BottomNavBarCustom extends StatelessWidget {
           icon: _AnimatedNavIcon(icon: Icons.favorite, isSelected: selectedIndex == 2),
           label: 'Favoritos',
         ),
+        BottomNavigationBarItem(
+          icon: _AnimatedNavIcon(icon: Icons.map_outlined, isSelected: selectedIndex == 3),
+          label: 'Mapa',
+        ),
       ],
     );
   }
