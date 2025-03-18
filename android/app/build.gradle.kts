@@ -28,6 +28,9 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
+        // Define el placeholder para la clave de GOOGLE_API_KEY
+        manifestPlaceholders["googleMapsApiKey"] = System.getenv("GOOGLE_API_KEY") ?: ""
     }
 
     buildTypes {

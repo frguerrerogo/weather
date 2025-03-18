@@ -9,31 +9,31 @@ La aplicación obtiene datos meteorológicos y eventos climáticos de la API de 
 <table>
   <tr>
     <td>
-      <img src="assets/images/readme/1.jpeg" alt="Lista de Colaboradores" width="300" />
+      <img src="assets/images/readme/1.jpeg" alt="Permiso para usar ubicación" width="300" />
       <p><strong>Permiso para usar ubicación</strong></p>
     </td>
     <td>
-      <img src="assets/images/readme/2.jpeg" alt="Búsqueda de Colaboradores" width="300" />
+      <img src="assets/images/readme/2.jpeg" alt="Información del día de hoy" width="300" />
       <p><strong>Información del día de hoy</strong></p>
     </td>
   </tr>
   <tr>
     <td>
-      <img src="assets/images/readme/3.jpeg" alt="Crear Colaborador" width="300" />
+      <img src="assets/images/readme/3.jpeg" alt="Información de los últimos días" width="300" />
       <p><strong>Información de los últimos días</strong></p>
     </td>
     <td>
-      <img src="assets/images/readme/4.jpeg" alt="Detalles del Colaborador" width="300" />
+      <img src="assets/images/readme/4.jpeg" alt="Ubicación del dispositivo en el mapa" width="300" />
       <p><strong>Ubicación del dispositivo en el mapa</strong></p>
     </td>
   </tr>
   <tr>
     <td>
-      <img src="assets/images/readme/5.jpeg" alt="Editar Colaborador" width="300" />
+      <img src="assets/images/readme/5.jpeg" alt="Eventos" width="300" />
       <p><strong>Eventos</strong></p>
     </td>
     <td>
-      <img src="assets/images/readme/6.jpeg" alt="Detalles del Colaborador" width="300" />
+      <img src="assets/images/readme/6.jpeg" alt="Sin conexión" width="300" />
       <p><strong>Sin conexión</strong></p>
     </td>
 </table>
@@ -74,6 +74,18 @@ La aplicación obtiene datos meteorológicos y eventos climáticos de la API de 
    git clone https://github.com/frguerrerogo/weather.git
    cd weather
    ```
+
+2. Configuración de variables de entorno
+
+    - Crea un archivo `.env` en la raíz del proyecto.
+    - Agrega las siguientes claves de API:
+
+       ```bash
+      # .env.example
+      WEATHER_API_KEY=TU_CLAVE_AQUI
+      GOOGLE_API_KEY=TU_CLAVE_AQUI
+      ```
+
 2. Instalar dependencias:
    ```bash
    flutter pub get
@@ -95,6 +107,7 @@ La aplicación obtiene datos meteorológicos y eventos climáticos de la API de 
       ```bash
    flutter test
    ```
+
 
 ## 🎨 Flavors (Ambientes)
 

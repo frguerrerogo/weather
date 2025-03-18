@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:weather/data/core/datasources/remote/apis/api_utils.dart';
@@ -7,9 +8,9 @@ import 'package:weather/data/core/models/index.dart' show WeatherModel;
 
 const String _baseUrl =
     'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{latitude},{longitude}/{startDate}/{endDate}?unitGroup=metric&key={apiKey}&contentType=json';
-const String _apiKey = 'TAYHZPJ44QB37YAEJLZVWAZ4E';
 
 class WeatherApi {
+  static final String _apiKey = dotenv.env['WEATHER_API_KEY'] ?? '';
   Future<WeatherModel> fetchWeather({required double latitude, required double longitude}) async {
     final (startDate, endDate) = ApiUtils.getDateRange();
     final uri = Uri.parse(
